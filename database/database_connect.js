@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const env = require('env2')('./../config.env');
+const env = require('env2')('./config.env');
 const url = require('url');
 
 if (!process.env.DB_URL) {
@@ -13,7 +13,7 @@ const options = {
   host: params.hostname,
   port: params.port,
   database: params.pathname.split('/')[1],
-  max: params.env.DB_MAX_CONNECTIONS || 2,
+  max: 2,
   user: username,
   password: password,
   ssl: (params.hostname !== 'localhost'),
