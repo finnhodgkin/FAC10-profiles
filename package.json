@@ -1,0 +1,27 @@
+{
+  "name": "fac10-profiles",
+  "version": "1.0.0",
+  "description": "Github project profiles for everyone on FAC10 of Founders & Coders",
+  "main": "src/server",
+  "scripts": {
+    "start": "node src/server",
+    "devStart": "nodemon src/server",
+    "test": "node tests/tests | tap-spec",
+    "coverage": "instanbul tests/tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finnhodgkin/FAC10-profiles.git"
+  },
+  "author": "Finn Hodgkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/finnhodgkin/FAC10-profiles/issues"
+  },
+  "homepage": "https://github.com/finnhodgkin/FAC10-profiles#readme",
+  "devDependencies": {
+    "shot": "^3.4.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  }
+}
