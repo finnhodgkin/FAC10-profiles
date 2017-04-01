@@ -9,6 +9,8 @@ const router = (req, res) => {
 
   const path = {
     '/': 'index.html',
+    '/users': handler.users,
+    '/user': handler.user,
   }[pathname];
 
   if (path || isAsset) {

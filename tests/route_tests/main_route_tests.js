@@ -40,6 +40,10 @@ const routesToTest = {
     {
       statusCode: 404,
     }],
+  users:[{url:'/users', method:'get'},
+    {
+      statusCode: 200,
+    }],
 };
 
 /**
