@@ -79,6 +79,31 @@ main {
   text-align: center;
 }
 
+.projects {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.project {
+  font-size: 2rem;
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.project__name {
+
+}
+
+.project__text {
+
+}
+
+.project__link {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 60rem) {
 
 }

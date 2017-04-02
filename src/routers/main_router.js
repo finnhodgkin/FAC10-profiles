@@ -8,7 +8,7 @@ const router = (req, res) => {
   const isAsset = pathname.indexOf('/assets') !== -1;
 
   const path = {
-    '/': 'index.html',
+    '/': handler.users,
     '/users': handler.users,
     '/user': handler.user,
   }[pathname];
