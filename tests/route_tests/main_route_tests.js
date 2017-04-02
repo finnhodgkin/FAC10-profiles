@@ -40,16 +40,19 @@ const routesToTest = {
     {
       statusCode: 404,
     }],
-  users:[{url:'/users', method:'get'},
+  usersAll:[{url:'/users', method:'get'},
+    {
+      statusCode: 200,
+    }],
+  usersTeam:[{url:'/users?team=SoFly', method:'get'},
     {
       statusCode: 200,
     }],
 };
 
 /**
- * [testMultipleRoutes runs ]
+ * [Runs tests on an object filled with routes]
  * @param  {object} routesToTest
- * Runs tests on an object filled with routes
  */
 function testMultipleRoutes (routesToTest) {
   Object.keys(routesToTest).forEach(route => {

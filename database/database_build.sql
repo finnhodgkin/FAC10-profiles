@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, teams, userteam, teamprojects, mentors, usermentor CASCADE;
+DROP TABLE IF EXISTS users, teams, userteam, teamprojects, projects CASCADE;
 
 CREATE TABLE users (
     id                SERIAL     PRIMARY KEY,
@@ -34,7 +34,7 @@ VALUES ('Yvonne', '禹彤', 'Liu', 'yvonne-liu', 'English, Mandarin Chinese, som
 
 CREATE TABLE teams (
     id            SERIAL    PRIMARY KEY,
-    team_names    VARCHAR(64)  NOT NULL
+    name    VARCHAR(64)  UNIQUE NOT NULL
 );
 
 CREATE TABLE userteam (
@@ -42,11 +42,12 @@ CREATE TABLE userteam (
     team_id       INTEGER REFERENCES teams(id)
 );
 
-CREATE TABLE teamprojects (
+CREATE TABLE projects (
     id               SERIAL       PRIMARY KEY,
-    team_id          INTEGER REFERENCES teams(id),
-    project_names    VARCHAR(64)  NOT NULL,
-    project_url      VARCHAR(64)  NOT NULL
+    name             VARCHAR(64)  NOT NULL,
+    week             INTEGER,
+    url              VARCHAR(64)  NOT NULL,
+    team_id          INTEGER REFERENCES teams(id)
 );
 
 COMMIT;

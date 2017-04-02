@@ -33,9 +33,8 @@ handler.users = (req, res) => {
     handler.serveError(req, res, new Error('Error in \'Users\' query.'));
   }
 
-}
+};
 
-// template.user(userId, handle(call(null, req, res)));
 /*******************************************************************************
 -- STATIC CONTENT --------------------------------------------------------------
 *******************************************************************************/
@@ -58,7 +57,7 @@ handler.static = (req, res, filePath) => {
   const fPath = path.join(__dirname, '..', '..', 'public', filePath);
 
   validatedPath ?
-    fs.readFile(fPath, 'utf8', (err, file) => {
+    fs.readFile(fPath, (err, file) => {
       if (err) {
         handler.error(req, res, err);
         return;
@@ -81,7 +80,7 @@ handler.error = (req, res, err, statusCode) => {
     console.log(err.message);
   }
   res.writeHead(statusCode || 404, { 'Content-Type': 'text/html' });
-  res.end('404: Page not found.')
-}
+  res.end('404: Page not found.');
+};
 
 module.exports = handler;
