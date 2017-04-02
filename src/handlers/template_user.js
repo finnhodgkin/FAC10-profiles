@@ -9,25 +9,24 @@ module.exports = user = {};
 /*******************************************************************************
 -- TEMPLATES -------------------------------------------------------------------
 *******************************************************************************/
-
-const template = (user) => {
+user.template = (userData) => {
   return `
   <section class="user">
-    <a href="https://github.com/${user.github_user_name}" class="user__link">
-      <h3 class="user__name">${user.first_name}</h2>
-      <p class="user__text">Languages: ${user.languages}</p>
+    <a href="https://github.com/${userData.github_user_name}" class="user__link">
+      <h3 class="user__name">${userData.first_name}</h2>
+      <p class="user__text">Languages: ${userData.languages}</p>
     </a>
   </section>
   `;
 };
 
+user.build = helpers.buildData(user.template);
 
 /*******************************************************************************
 -- HANDLER ---------------------------------------------------------------------
 *******************************************************************************/
-user.get = (user, callback) => {
-  build = helpers.buildData(template);
-  waterfall(user, [getData.user, build],
+user.get = (userId, callback) => {
+  waterfall(userId, [getData.user, user.build],
     (err, userData) => {
       if (err) { return callback(err); }
       helpers.replaceTemplate('users.html', '<!--USERS-->', userData, callback);
