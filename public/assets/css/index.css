@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #ECEFF1;
 }
 ol, ul {
 	list-style: none;
@@ -54,6 +55,7 @@ main {
   padding: 2rem;
   display: inline-block;
   vertical-align: top;
+	text-decoration: none;
 }
 
 .user__image {
@@ -64,19 +66,18 @@ main {
   box-sizing: border-box;
   border: .5rem solid rgb(30, 56, 121);
   transition: 0.3s all ease;
-  opacity: 1;
 }
 
 .user:hover .user__image,
 .user:focus .user__image {
-  border: 1rem solid rgb(14, 21, 50);
-  opacity: 0.8;
+  border: .8rem solid rgb(14, 21, 50);
 }
 
 .user__name {
   margin-top: 1rem;
   font-size: 2rem;
   text-align: center;
+	color: black;
 }
 
 .projects {
@@ -102,6 +103,111 @@ main {
 
 .project__link {
   text-decoration: none;
+}
+
+.userprofile {
+	max-width: 80rem;
+	margin: 4rem auto;
+	border-radius: .5rem;
+	padding: 3rem;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	animation: dropin .5s normal forwards ease;
+	/*animation-iteration-count: 1*/
+}
+.userprofile:hover {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.userprofile__profile {
+	box-sizing: border-box;
+	padding-left: 4rem;
+	width: 35%;
+	display: inline-block;
+	vertical-align: top;
+}
+.userprofile__image {
+	width: 20%;
+	max-width: 15rem;
+	display: inline-block;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: .5rem solid #d9dcde;
+  transition: 0.3s all ease;
+}
+.userprofile__link {
+	text-decoration: none;
+}
+.userprofile__text {
+	font-size: 1.5rem;
+}
+.userprofile__name {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.userprofile__project {
+	font-size: 1.5rem;
+	padding: .3rem;
+	display: block;
+	color: blue;
+	transition: 1s all ease;
+}
+.userprofile__project:hover,
+.userprofile__project:focus {
+	color: black;
+}
+
+.userprofile__profile--controls {
+	width: 10%;
+}
+
+.userprofile__close {
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: .4rem;
+  padding: .5rem 1rem;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-color: #FFCDD2;
+  color: rgba(0,0,0,0.6);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(.25,.8,.25,1);
+	float: right;
+}
+
+.userprofile__close:hover, .userprofile__close:focus {
+  background-color: #F44336;
+  color: white;
+}
+
+@keyframes dropin {
+	from, 60%, 75%, 90%, to {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -3000px, 0);
+		transform: translate3d(0, -3000px, 0);
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 25px, 0);
+		transform: translate3d(0, 25px, 0);
+	}
+	75% {
+		-webkit-transform: translate3d(0, -10px, 0);
+		transform: translate3d(0, -10px, 0);
+	}
+	90% {
+		-webkit-transform: translate3d(0, 5px, 0);
+		transform: translate3d(0, 5px, 0);
+	}
+	to {
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 
 @media screen and (max-width: 60rem) {

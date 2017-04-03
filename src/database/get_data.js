@@ -8,7 +8,6 @@ getData.allUsers = (x, callback) => {
     if (err) { return callback(err); }
     callback(null, response.rows);
   });
-
 };
 
 getData.filteredByTeam = (team, callback) => {
@@ -20,7 +19,6 @@ getData.filteredByTeam = (team, callback) => {
     if (err) { return callback(err); }
     callback(null, response.rows);
   });
-
 };
 
 getData.teamProjects = (team, callback) => {
@@ -33,10 +31,35 @@ getData.teamProjects = (team, callback) => {
   });
 };
 
+getData.userTeams = (id, callback) => {
+  connect.query(`
+    SELECT teams.name
+      FROM teams INNER JOIN userteam ON userteam.team_id = teams.id
+      INNER JOIN users on userteam.user_id = users.id
+      WHERE users.id = $1;
+    `, [id], (err, response) => {
+      if (err) { return callback(err); }
+      callback(null, response.rows);
+  });
+};
+
+getData.userProjects = (id, callback) => {
+  connect.query(`
+    SELECT projects.name, projects.url
+    FROM projects INNER JOIN teams ON teams.id = projects.team_id
+    INNER JOIN userteam ON userteam.team_id = teams.id
+    INNER JOIN users on userteam.user_id = users.id
+    WHERE users.id = $1;
+    `, [id], (err, response) => {
+      if (err) { return callback(err); }
+      callback(null, response.rows);
+  });
+}
+
 getData.user = (id, callback) => {
   connect.query(`
       SELECT users.id, users.first_name, users.last_name, users.middle_name, users.github_user_name,
-      users.languages
+      users.languages, profile_img
       FROM users WHERE users.id = $1;`, [id], (err, response) => {
     if (err) { return callback(err); }
     callback(null, response.rows);
