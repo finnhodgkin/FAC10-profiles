@@ -21,7 +21,7 @@ getData.filteredByTeam = (team, callback) => {
   });
 };
 
-getData.teamProjects = (team, callback) => {
+getData.teamProjects = team => callback => {
   connect.query(`
       SELECT projects.name, projects.url, projects.week, projects.id, teams.name AS team_name
       FROM projects INNER JOIN teams ON projects.team_id = teams.id
@@ -31,7 +31,7 @@ getData.teamProjects = (team, callback) => {
   });
 };
 
-getData.userTeams = (id, callback) => {
+getData.userTeams = team => callback => {
   connect.query(`
     SELECT teams.name
       FROM teams INNER JOIN userteam ON userteam.team_id = teams.id
@@ -43,7 +43,7 @@ getData.userTeams = (id, callback) => {
   });
 };
 
-getData.userProjects = (id, callback) => {
+getData.userProjects = id => callback => {
   connect.query(`
     SELECT projects.name, projects.url
     FROM projects INNER JOIN teams ON teams.id = projects.team_id
@@ -56,7 +56,7 @@ getData.userProjects = (id, callback) => {
   });
 }
 
-getData.user = (id, callback) => {
+getData.user = id => callback => {
   connect.query(`
       SELECT users.id, users.first_name, users.last_name, users.middle_name, users.github_user_name,
       users.languages, profile_img

@@ -1,0 +1,24 @@
+<section class="userprofile">
+
+  {{#user}}
+  <img class="userprofile__image" src="{{profile_img}}" alt="{{first_name}}'s portrait.'" />
+  <div class="userprofile__profile">
+    <a class="userprofile__link" href="https://github.com/{{github_name}}" >
+      <h3 class="userprofile__name">{{first_name}}</h2>
+    </a>
+    <p class="userprofile__text">Languages: {{languages}}</p>
+  </div>
+  {{/user}}
+
+  <section class="userprofile__profile">
+    <h2 class="userprofile__name">Projects:</h2>
+  {{#each projects}}
+    <a href="{{url}}" class="userprofile__project">{{name}}</a>
+  {{/each}}
+  </section>
+
+  <section class="userprofile__profile userprofile__profile--controls">
+    <a href="./" class="userprofile__close">close</a>
+  </section>
+
+</section>

@@ -1,8 +1,24 @@
-const router = require('./routers/main_router');
-const server = require('http').createServer(router);
+const hapi = require('hapi');
+const server = new hapi.Server();
 
-const port = process.env.PORT || 4000;
+const inert = require('inert');
+const vision = require('vision');
 
-server.listen(port, () => {
-  console.log(`Server is listening on port ${port}.`);
+const routes = require('./routes');
+const handlebars = require('./handlebars');
+
+server.connection({
+  host: process.env.HOSTNAME || 'localhost',
+  port: process.env.PORT || 4000,
+});
+
+server.register([inert, vision], err => {
+  if (err) throw err;
+  server.views(handlebars);
+  server.route(routes);
+});
+
+server.start(err => {
+  if (err) throw err;
+  console.log(`Server running at: ${server.info.uri}`)
 });
