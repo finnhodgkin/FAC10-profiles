@@ -50,4 +50,14 @@ CREATE TABLE projects (
     team_id          INTEGER REFERENCES teams(id)
 );
 
+CREATE TABLE auth (
+  id        SERIAL      PRIMARY KEY,
+  username  VARCHAR(32) UNIQUE NOT NULL,
+  password  VARCHAR(64) UNIQUE NOT NULL,
+  admin     BOOLEAN NOT NULL
+);
+
+INSERT INTO auth (username, password, admin)
+VALUES ('finn', '$2a$10$UDowcOEUkw1cU26vqPneKuVi4W0SUVCWGYvS0/mwQ91ki7td.vKFy', 'true');
+
 COMMIT;

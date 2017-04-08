@@ -8,13 +8,11 @@ module.exports = {
     const userId = request.query.id;
     const getUser = getData.user.call(null, userId);
     const getProj = getData.userProjects.call(null, userId);
-    console.log(typeof getData.user, typeof getProj)
     parallel([getUser, getProj], (err, dataArray) => {
       if (err) {
         console.log(err);
         return;
       }
-      console.log(dataArray);
       const data = { user: dataArray[0], projects: dataArray[1] };
       reply.view('user', data);
     });
